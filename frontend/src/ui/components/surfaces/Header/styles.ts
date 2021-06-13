@@ -21,10 +21,7 @@ export const HeaderAppBar = styled(AppBar)`
 
 export const HeaderLogo = styled('img')`
   height: 25px;
-
   ${({ theme }) => theme.breakpoints.up('md')} {
-    .MuiToolbar-root {
-      height: 47px;
-    }
+    height: 47px;
   }
 `;
