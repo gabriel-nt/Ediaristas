@@ -44,11 +44,7 @@ class DiaristController extends Controller
 
         $data['cpf'] = str_replace(['.', '-'], '', $data['cpf']);
         $data['zip_code'] = str_replace('-', '', $data['zip_code']);
-        $dados['phone'] = str_replace(
-            ['(', ')', ' ', '-'],
-            '',
-            $dados['phone']
-        );
+        $data['phone'] = str_replace(['(', ')', ' ', '-'], '', $data['phone']);
 
         Diarist::create($data);
 
@@ -88,11 +84,7 @@ class DiaristController extends Controller
 
         $data['cpf'] = str_replace(['.', '-'], '', $data['cpf']);
         $data['zip_code'] = str_replace('-', '', $data['zip_code']);
-        $dados['phone'] = str_replace(
-            ['(', ')', ' ', '-'],
-            '',
-            $dados['phone']
-        );
+        $data['phone'] = str_replace(['(', ')', ' ', '-'], '', $data['phone']);
 
         $diarist->update($data);
 
