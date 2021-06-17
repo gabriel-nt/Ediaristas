@@ -37,6 +37,16 @@
     </header>
 
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         @yield('content')
     </div>
 
@@ -60,7 +70,7 @@
     <script>
         $(document).ready(function() {
             $('#zip_code').mask('00000-000');
-            $('#phone').mask('(00) 0000-0000');
+            $('#phone').mask('(00) 00000-0000');
             $('#cpf').mask('000.000.000-00', {reverse: true});
         });
     </script>

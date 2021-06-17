@@ -22,14 +22,14 @@ export default function useIndex() {
 
     try {
       const { data } = await ApiService.get<{
-        diaristas: UserShortInterface[];
-        quantidade_diaristas: number;
-      }>(`api/diaristas-cidade?cep=${cep.replace(/\D/g, '')}`);
+        diarists: UserShortInterface[];
+        count_diarists: number;
+      }>(`api/diarists-city?zipCode=${cep.replace(/\D/g, '')}`);
 
       setIsSearch(true);
       setIsLoading(false);
-      setDiarists(data.diaristas);
-      setCountRestDiarists(data.quantidade_diaristas);
+      setDiarists(data.diarists);
+      setCountRestDiarists(data.count_diarists);
     } catch (e) {
       setIsLoading(false);
       setErrorMessage('CEP não encontrado');

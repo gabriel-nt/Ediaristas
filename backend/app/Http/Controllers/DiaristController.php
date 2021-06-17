@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Diarist;
+use App\Services\ViaCEP;
+use App\Http\Requests\DiaristRequest;
+
 use Illuminate\Http\Request;
 
 class DiaristController extends Controller
 {
+    protected ViaCEP $service;
+
+    public function __construct(ViaCEP $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * List the diarists
      *
@@ -34,17 +44,20 @@ class DiaristController extends Controller
     /**
      * Create new diarist
      *
-     * @param Request $request
+     * @param DiaristRequest $request
      * @return void
      */
-    public function store(Request $request)
+    public function store(DiaristRequest $request)
     {
+        dd($request);
+
         $data = $request->except('_token');
         $data['photo'] = $request->photo->store('public');
 
         $data['cpf'] = str_replace(['.', '-'], '', $data['cpf']);
         $data['zip_code'] = str_replace('-', '', $data['zip_code']);
         $data['phone'] = str_replace(['(', ')', ' ', '-'], '', $data['phone']);
+        $data['ibge_code'] = $this->service->search($data['zip_code'])['ibge'];
 
         Diarist::create($data);
 
@@ -70,10 +83,10 @@ class DiaristController extends Controller
      * Update the diarist
      *
      * @param integer $id
-     * @param Request $request
+     * @param DiaristRequest $request
      * @return void
      */
-    public function update(int $id, Request $request)
+    public function update(int $id, DiaristRequest $request)
     {
         $diarist = Diarist::findOrFail($id);
         $data = $request->except(['_token', '_method']);
@@ -85,6 +98,7 @@ class DiaristController extends Controller
         $data['cpf'] = str_replace(['.', '-'], '', $data['cpf']);
         $data['zip_code'] = str_replace('-', '', $data['zip_code']);
         $data['phone'] = str_replace(['(', ')', ' ', '-'], '', $data['phone']);
+        $data['ibge_code'] = $this->service->search($data['zip_code'])['ibge'];
 
         $diarist->update($data);
 

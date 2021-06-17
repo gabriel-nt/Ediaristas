@@ -45,10 +45,6 @@
     <input value="{{ @$diarist->state }}" type="text" class="form-control" id="state" name="state" required maxlength="2">
 </div>
 <div class="mb-3">
-    <label for="ibge_code" class="form-label">Código IBGE</label>
-    <input value="{{ @$diarist->ibge_code }}" type="text" class="form-control" id="ibge_code" name="ibge_code" required>
-</div>
-<div class="mb-3">
     <label for="photo" class="form-label">Foto</label>
     <input type="file" class="form-control" id="photo" name="photo" >
 </div>

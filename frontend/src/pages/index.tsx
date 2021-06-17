@@ -69,10 +69,10 @@ export default function Home() {
                 {diarists.map((item, index) => (
                   <UserInformation
                     key={index}
-                    name={item.nome_completo}
-                    picture={item.foto_usuario}
-                    rating={item.reputacao}
-                    description={item.cidade}
+                    name={item.full_name}
+                    picture={item.photo}
+                    rating={item.rating}
+                    description={item.city}
                   />
                 ))}
               </ProfessionalsContainer>
@@ -82,8 +82,8 @@ export default function Home() {
                   <Typography sx={{ mt: 5 }}>
                     ...e mais {countRestDiarists}
                     {countRestDiarists > 1
-                      ? ' profissionais atendem'
-                      : ' profissional atende'}
+                      ? ' profissionais atendem '
+                      : ' profissional atende '}
                     ao seu endereço
                   </Typography>
                 )}
