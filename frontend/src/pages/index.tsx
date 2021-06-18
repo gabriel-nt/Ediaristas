@@ -63,41 +63,42 @@ export default function Home() {
             </Button>
           </FormElementsContainer>
 
-          {isSearch && diarists.length > 0 ? (
-            <ProfissionalsPaper>
-              <ProfessionalsContainer>
-                {diarists.map((item, index) => (
-                  <UserInformation
-                    key={index}
-                    name={item.full_name}
-                    picture={item.photo}
-                    rating={item.rating}
-                    description={item.city}
-                  />
-                ))}
-              </ProfessionalsContainer>
+          {isSearch &&
+            (diarists.length > 0 ? (
+              <ProfissionalsPaper>
+                <ProfessionalsContainer>
+                  {diarists.map((item, index) => (
+                    <UserInformation
+                      key={index}
+                      name={item.full_name}
+                      picture={item.photo}
+                      rating={item.rating}
+                      description={item.city}
+                    />
+                  ))}
+                </ProfessionalsContainer>
 
-              <Container sx={{ textAlign: 'center' }}>
-                {countRestDiarists > 0 && (
-                  <Typography sx={{ mt: 5 }}>
-                    ...e mais {countRestDiarists}
-                    {countRestDiarists > 1
-                      ? ' profissionais atendem '
-                      : ' profissional atende '}
-                    ao seu endereço
-                  </Typography>
-                )}
+                <Container sx={{ textAlign: 'center' }}>
+                  {countRestDiarists > 0 && (
+                    <Typography sx={{ mt: 5 }}>
+                      ...e mais {countRestDiarists}
+                      {countRestDiarists > 1
+                        ? ' profissionais atendem '
+                        : ' profissional atende '}
+                      ao seu endereço
+                    </Typography>
+                  )}
 
-                <Button variant="contained" color="secondary" sx={{ mt: 5 }}>
-                  Contratar um profissional
-                </Button>
-              </Container>
-            </ProfissionalsPaper>
-          ) : (
-            <Typography align="center" color="textPrimary">
-              Ainda não temos nenhuma diarista disponível em sua região
-            </Typography>
-          )}
+                  <Button variant="contained" color="secondary" sx={{ mt: 5 }}>
+                    Contratar um profissional
+                  </Button>
+                </Container>
+              </ProfissionalsPaper>
+            ) : (
+              <Typography align="center" color="textPrimary">
+                Ainda não temos nenhuma diarista disponível em sua região
+              </Typography>
+            ))}
         </Container>
       </main>
     </div>
