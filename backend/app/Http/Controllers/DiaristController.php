@@ -92,7 +92,7 @@ class DiaristController extends Controller
         $data = $request->except(['_token', '_method']);
 
         if ($request->hasFile('photo')) {
-            $data['photo'] = $request->photo->store();
+            $data['photo'] = $request->photo->store('public');
         }
 
         $data['cpf'] = str_replace(['.', '-'], '', $data['cpf']);
